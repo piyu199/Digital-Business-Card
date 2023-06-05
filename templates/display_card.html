@@ -75,16 +75,16 @@
                     <a href="#">
                       <span class="envlope"></span>
                       <span class="leftalign numbertop">
-                        <a href="{{emp.email_id}}">{{emp_details.email_id}}</a>
+                        <a href="{{emp_details.email_id}}">{{emp_details.email_id}}</a>
                       </span>
                     </a>
                   </li>
                   <li>
                     <span class="weblink"></span>
                     <span class="leftalign">
-                      <a href="{{emp.social_media1}}" target="_blank">{{emp_details.social_media1}}</a>
+                      <a href="{{emp_details.social_media1}}" target="_blank">{{emp_details.social_media1}}</a>
                     </span>
-                    <a href="{{emp.social_media2}}" class="colorlink" target="_blank">{{emp_details.social_media2}}</a>
+                    <a href="{{emp_details.social_media2}}" class="colorlink" target="_blank">{{emp_details.social_media2}}</a>
                   </li>
                 </ul>
               </div>
@@ -164,7 +164,7 @@
                   <img src="{{emp_details.qr_code.url}}" height="259" width="259" class="text-center qrwidth" />
                 </div>
                 <div class="col-md-12 my-3">
-                  <a download="https://cloudmojo.tech/Indiatoday/images/vivek.png" href="https://cloudmojo.tech/Indiatoday/img/vivek.png">
+                  <a download="{{emp_details.qr_code.url}}" href="{{emp_details.qr_code.url}}">
                     <button class="btn btn-icon icon-left btn-outline-dark download_my_qr_code">Download </button>
                   </a>
                 </div>
