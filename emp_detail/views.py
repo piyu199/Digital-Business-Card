@@ -8,6 +8,7 @@ from django.core.files.base import ContentFile
 from io import BytesIO
 import base64
 from django.contrib import auth
+from django.http import HttpResponse
 
 
 
@@ -41,6 +42,7 @@ def add_emp(request):
         prod.address=request.POST["address"]
         prod.role_id=int(request.POST["role"])
         prod.account_created=datetime.now()
+        prod.template_id = request.POST['template_id']
         if len(request.FILES) != 0: 
             prod.image_upload=request.FILES['image']
 
@@ -80,15 +82,17 @@ def add_emp(request):
     
 
 def display_card(request,id=0):
+    selected_template = request.session.get('selected_template')
     if id:
         try:
             emp_details=Detail.objects.get(id=id)
+            selected_template = emp_details.template_id
             context={
                 'emp_details':emp_details
             }
-            return render(request,'display_card.html',context)
+            return render(request,f'{selected_template}.html',context)
         except:
-            return HttpResponse("Somethong Went wrong")
+            return HttpResponse("Something Went wrong")
 
     return render(request,'display_card.html')
 

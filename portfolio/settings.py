@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'emp_detail',
+    'qrcode_app',
 ]
 
 MIDDLEWARE = [

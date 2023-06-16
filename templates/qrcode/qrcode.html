@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic QR Code Generation</title>
+</head>
+<body>
+    <h1>Dynamic QR Code Generation</h1>
+    
+    <form action="{% url 'qrcode:qrcode' %}" method="POST">
+    {% csrf_token %}
+        <input type="text" id="inputData" name="param" placeholder="Enter data">
+        <br>
+        <button type="submit">Submit</button>
+        <div id="qrcodeContainer"></div>
+    </form>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        var qrCode = new QRCode(document.getElementById("qrcodeContainer"));
+
+        var inputElement = document.getElementById("inputData");
+        inputElement.addEventListener("input", function() {
+            var inputData = inputElement.value;
+            qrCode.clear();
+            qrCode.makeCode(inputData);
+        });
+    </script>
+</body>
+</html>

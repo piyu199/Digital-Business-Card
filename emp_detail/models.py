@@ -1,4 +1,3 @@
-
 from django.db import models
 from datetime import datetime
 
@@ -10,6 +9,10 @@ class Roles(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Role"
+        verbose_name_plural = "Roles"
 
 class Detail(models.Model):
     first_name=models.CharField(max_length=100,null=True)
@@ -25,7 +28,11 @@ class Detail(models.Model):
     social_media2=models.CharField(max_length=100,null=True)
     address = models.CharField(max_length=200,null=True)
     role=models.ForeignKey(Roles,on_delete=models.CASCADE)
+    template_id=models.IntegerField(default=0)
 
     def __str__(self):
         return "%s %s %s" % (self.first_name, self.last_name,self.email_id)
 
+    class Meta:
+        verbose_name="Detail"
+        verbose_name_plural = "Details"
