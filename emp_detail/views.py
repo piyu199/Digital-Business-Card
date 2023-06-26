@@ -9,14 +9,16 @@ from io import BytesIO
 import base64
 from django.contrib import auth
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 
 
 # Create your views here.
+@login_required
 def index(request):
     return render(request,'emp/index.html')
 
-
+@login_required
 def list_details(request):
     business_cards = Detail.objects.all()
     #current_image = f"{MEDIA_ROOT}images\{business_cards.image_upload}"
@@ -27,7 +29,7 @@ def list_details(request):
     }
     return render(request,"list_details.html",context)
 
-
+@login_required
 def add_emp(request):
     if request.method=="POST":
         prod=Detail()
@@ -81,6 +83,7 @@ def add_emp(request):
         return HttpResponse("An Exception Occured!Employee has not been Added")
     
 
+@login_required
 def display_card(request,id=0):
     selected_template = request.session.get('selected_template')
     if id:
